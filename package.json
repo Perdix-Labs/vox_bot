@@ -1,0 +1,22 @@
+{
+  "name": "vox_bot",
+  "version": "1.0.0",
+  "description": "Sort voice messages received from Telegram.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Perdix-Labs/vox_bot.git"
+  },
+  "author": "Braulio Chavez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Perdix-Labs/vox_bot/issues"
+  },
+  "homepage": "https://github.com/Perdix-Labs/vox_bot#readme",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.12.1"
+  }
+}
