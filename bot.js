@@ -30,7 +30,15 @@ bot.on('text', function(msg) {
     // Forward all undubbed messages.
     forwardAllUndubbedMessages(bot, chatId, undubbedMessages);
   } else if  (msgWords[0] === '/help') {
-    bot.sendMessage(chatId, 'Deja de estar chingando Cesar.');
+    bot.sendMessage(chatId,
+        'Hello, I am Vox bot.\n' +
+        'I can help you to store voice messages to forward later.\n' +
+        'Command list:\n' +
+        '/undubbed returns a list of all the undubbed voice messages.\n' +
+        '/dub <name> dub the last undubbed message with a name.\n' +
+        '/all returns a list of all dubbed messages.\n' +
+        '/say <name> forwards a dubbed message with the provided name.\n' +
+        '/help returns this help list.\n');
   }
 });
 
