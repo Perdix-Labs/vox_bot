@@ -91,8 +91,12 @@ function forwardAllUndubbedMessages(bot, chatId, undubbedMessages) {
 
 function dubMessage(bot, chatId, dub, dubbedMessages, undubbedMessages ) {
   if (dub) {
-    dubbedMessages[dub] = undubbedMessages.pop();
-    bot.sendMessage(chatId, 'Message got dubbed');
+    if (undubbedMessages.length > 0) {
+      dubbedMessages[dub] = undubbedMessages.pop();
+      bot.sendMessage(chatId, 'Message got dubbed');
+    } else {
+      bot.sendMessage(chatId, 'There are no messages to dub.');
+    }
   } else {
     bot.sendMessage(chatId, 'Need name to dub. /dub name');
   }
