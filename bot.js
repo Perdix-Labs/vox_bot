@@ -1,4 +1,6 @@
 var TelegramBot = require('node-telegram-bot-api');
+var JsonDB = require('node-json-db');
+var db = new JsonDB('messageDatabase', true, false);
 
 var options = {
   polling: true
@@ -9,6 +11,15 @@ var token = process.env.TELEGRAM_BOT_TOKEN || 'TELEGRAM_BOT_TOKEN';
 var bot = new TelegramBot(token, options);
 var undubbedMessages = [];
 var dubbedMessages = {};
+var dubbedPath = '/dubbed';
+
+try {
+  // Load messages form database.
+  dubbedMessages = db.getData(dubbedPath);
+} catch(error) {
+  // Create an empty object in database.
+  db.push(dubbedPath, {});
+}
 
 bot.getMe().then(function(me) {
   console.log('Hi my name is %s!', me.username);
@@ -23,6 +34,8 @@ bot.on('text', function(msg) {
     // gives a name to last stored voice message
     var dub = msgWords[1];
     dubMessage(bot, chatId, dub, dubbedMessages, undubbedMessages);
+    // save dubbed messages to database. Override the whole thing.
+    db.push(dubbedPath, dubbedMessages);
   } else if (msgWords[0] === '/say') {
     var dub = msgWords[1];
     say(bot, chatId, dub, dubbedMessages);

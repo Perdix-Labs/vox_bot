@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Perdix-Labs/vox_bot#readme",
   "dependencies": {
+    "node-json-db": "^0.4.6",
     "node-telegram-bot-api": "^0.12.1"
   }
 }
